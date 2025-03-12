@@ -1,399 +1,70 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>BACE1 Image Gallery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evangelos Papadopoulos</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        table { width: 100%; border-collapse: collapse; }
-        td { padding: 10px; border: 1px solid #ccc; text-align: center; }
-        img { width: 400px; height: auto; display: block; margin: auto; }
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            height: 100vh;
+            box-shadow: 2px 0px 5px rgba(0,0,0,0.1);
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
     </style>
+    <script>
+        function playVideo(videoSrc) {
+            const contentDiv = document.querySelector('.content');
+            contentDiv.innerHTML = `
+                <h3>Video Player</h3>
+                <video controls width="50%">
+                    <source src="${videoSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        }
+    </script>
 </head>
 <body>
-    <h1>BACE1 Image Gallery</h1>
-    <table>
-        <tr>
-            <td><img src='images/2F3E.png' alt='2F3E.png'><br>2F3E</td>
-            <td><img src='images/2F3F.png' alt='2F3F.png'><br>2F3F</td>
-            <td><img src='images/2HIZ.png' alt='2HIZ.png'><br>2HIZ</td>
-            <td><img src='images/2HM1.png' alt='2HM1.png'><br>2HM1</td>
-        </tr>
-        <tr>
-            <td><img src='images/2IQG.png' alt='2IQG.png'><br>2IQG</td>
-            <td><img src='images/2P83.png' alt='2P83.png'><br>2P83</td>
-            <td><img src='images/2Q11.png' alt='2Q11.png'><br>2Q11</td>
-            <td><img src='images/2Q15.png' alt='2Q15.png'><br>2Q15</td>
-        </tr>
-        <tr>
-            <td><img src='images/2QK5.png' alt='2QK5.png'><br>2QK5</td>
-            <td><img src='images/2QMD.png' alt='2QMD.png'><br>2QMD</td>
-            <td><img src='images/2QMF.png' alt='2QMF.png'><br>2QMF</td>
-            <td><img src='images/2QMG.png' alt='2QMG.png'><br>2QMG</td>
-        </tr>
-        <tr>
-            <td><img src='images/2QP8.png' alt='2QP8.png'><br>2QP8</td>
-            <td><img src='images/2VIE.png' alt='2VIE.png'><br>2VIE</td>
-            <td><img src='images/2VIJ.png' alt='2VIJ.png'><br>2VIJ</td>
-            <td><img src='images/2VIY.png' alt='2VIY.png'><br>2VIY</td>
-        </tr>
-        <tr>
-            <td><img src='images/2VIZ.png' alt='2VIZ.png'><br>2VIZ</td>
-            <td><img src='images/2VJ6.png' alt='2VJ6.png'><br>2VJ6</td>
-            <td><img src='images/2VJ7.png' alt='2VJ7.png'><br>2VJ7</td>
-            <td><img src='images/2VJ9.png' alt='2VJ9.png'><br>2VJ9</td>
-        </tr>
-        <tr>
-            <td><img src='images/2VNM.png' alt='2VNM.png'><br>2VNM</td>
-            <td><img src='images/2VNN.png' alt='2VNN.png'><br>2VNN</td>
-            <td><img src='images/2WEZ.png' alt='2WEZ.png'><br>2WEZ</td>
-            <td><img src='images/2WF0.png' alt='2WF0.png'><br>2WF0</td>
-        </tr>
-        <tr>
-            <td><img src='images/2WF1.png' alt='2WF1.png'><br>2WF1</td>
-            <td><img src='images/2WF2.png' alt='2WF2.png'><br>2WF2</td>
-            <td><img src='images/2WF3.png' alt='2WF3.png'><br>2WF3</td>
-            <td><img src='images/2WF4.png' alt='2WF4.png'><br>2WF4</td>
-        </tr>
-        <tr>
-            <td><img src='images/2XFI.png' alt='2XFI.png'><br>2XFI</td>
-            <td><img src='images/2XFJ.png' alt='2XFJ.png'><br>2XFJ</td>
-            <td><img src='images/2XFK.png' alt='2XFK.png'><br>2XFK</td>
-            <td><img src='images/3BUF.png' alt='3BUF.png'><br>3BUF</td>
-        </tr>
-        <tr>
-            <td><img src='images/3BUG.png' alt='3BUG.png'><br>3BUG</td>
-            <td><img src='images/3BUH.png' alt='3BUH.png'><br>3BUH</td>
-            <td><img src='images/3CIB.png' alt='3CIB.png'><br>3CIB</td>
-            <td><img src='images/3CIC.png' alt='3CIC.png'><br>3CIC</td>
-        </tr>
-        <tr>
-            <td><img src='images/3CID.png' alt='3CID.png'><br>3CID</td>
-            <td><img src='images/3CKP.png' alt='3CKP.png'><br>3CKP</td>
-            <td><img src='images/3CKR.png' alt='3CKR.png'><br>3CKR</td>
-            <td><img src='images/3IN3.png' alt='3IN3.png'><br>3IN3</td>
-        </tr>
-        <tr>
-            <td><img src='images/3IN4.png' alt='3IN4.png'><br>3IN4</td>
-            <td><img src='images/3IVH.png' alt='3IVH.png'><br>3IVH</td>
-            <td><img src='images/3IVI.png' alt='3IVI.png'><br>3IVI</td>
-            <td><img src='images/3IXJ.png' alt='3IXJ.png'><br>3IXJ</td>
-        </tr>
-        <tr>
-            <td><img src='images/3K5C.png' alt='3K5C.png'><br>3K5C</td>
-            <td><img src='images/3K5D.png' alt='3K5D.png'><br>3K5D</td>
-            <td><img src='images/3K5F.png' alt='3K5F.png'><br>3K5F</td>
-            <td><img src='images/3K5G.png' alt='3K5G.png'><br>3K5G</td>
-        </tr>
-        <tr>
-            <td><img src='images/3KMX.png' alt='3KMX.png'><br>3KMX</td>
-            <td><img src='images/3L3A.png' alt='3L3A.png'><br>3L3A</td>
-            <td><img src='images/3L58.png' alt='3L58.png'><br>3L58</td>
-            <td><img src='images/3L59.png' alt='3L59.png'><br>3L59</td>
-        </tr>
-        <tr>
-            <td><img src='images/3L5B.png' alt='3L5B.png'><br>3L5B</td>
-            <td><img src='images/3L5C.png' alt='3L5C.png'><br>3L5C</td>
-            <td><img src='images/3L5D.png' alt='3L5D.png'><br>3L5D</td>
-            <td><img src='images/3L5E.png' alt='3L5E.png'><br>3L5E</td>
-        </tr>
-        <tr>
-            <td><img src='images/3L5F.png' alt='3L5F.png'><br>3L5F</td>
-            <td><img src='images/3LPI.png' alt='3LPI.png'><br>3LPI</td>
-            <td><img src='images/3LPJ.png' alt='3LPJ.png'><br>3LPJ</td>
-            <td><img src='images/3LPK.png' alt='3LPK.png'><br>3LPK</td>
-        </tr>
-        <tr>
-            <td><img src='images/3OHF.png' alt='3OHF.png'><br>3OHF</td>
-            <td><img src='images/3OHH.png' alt='3OHH.png'><br>3OHH</td>
-            <td><img src='images/3PI5.png' alt='3PI5.png'><br>3PI5</td>
-            <td><img src='images/3QBH.png' alt='3QBH.png'><br>3QBH</td>
-        </tr>
-        <tr>
-            <td><img src='images/3QI1.png' alt='3QI1.png'><br>3QI1</td>
-            <td><img src='images/3R2F.png' alt='3R2F.png'><br>3R2F</td>
-            <td><img src='images/3RSX.png' alt='3RSX.png'><br>3RSX</td>
-            <td><img src='images/3RTH.png' alt='3RTH.png'><br>3RTH</td>
-        </tr>
-        <tr>
-            <td><img src='images/3RTM.png' alt='3RTM.png'><br>3RTM</td>
-            <td><img src='images/3RTN.png' alt='3RTN.png'><br>3RTN</td>
-            <td><img src='images/3RVI.png' alt='3RVI.png'><br>3RVI</td>
-            <td><img src='images/3S7L.png' alt='3S7L.png'><br>3S7L</td>
-        </tr>
-        <tr>
-            <td><img src='images/3S7M.png' alt='3S7M.png'><br>3S7M</td>
-            <td><img src='images/3SKF.png' alt='3SKF.png'><br>3SKF</td>
-            <td><img src='images/3SKG.png' alt='3SKG.png'><br>3SKG</td>
-            <td><img src='images/3U6A.png' alt='3U6A.png'><br>3U6A</td>
-        </tr>
-        <tr>
-            <td><img src='images/3UDH.png' alt='3UDH.png'><br>3UDH</td>
-            <td><img src='images/3UDJ.png' alt='3UDJ.png'><br>3UDJ</td>
-            <td><img src='images/3UDK.png' alt='3UDK.png'><br>3UDK</td>
-            <td><img src='images/3UDM.png' alt='3UDM.png'><br>3UDM</td>
-        </tr>
-        <tr>
-            <td><img src='images/3UDN.png' alt='3UDN.png'><br>3UDN</td>
-            <td><img src='images/3UDP.png' alt='3UDP.png'><br>3UDP</td>
-            <td><img src='images/3UDQ.png' alt='3UDQ.png'><br>3UDQ</td>
-            <td><img src='images/3UDR.png' alt='3UDR.png'><br>3UDR</td>
-        </tr>
-        <tr>
-            <td><img src='images/3UDY.png' alt='3UDY.png'><br>3UDY</td>
-            <td><img src='images/3UFL.png' alt='3UFL.png'><br>3UFL</td>
-            <td><img src='images/3VEU.png' alt='3VEU.png'><br>3VEU</td>
-            <td><img src='images/3VF3.png' alt='3VF3.png'><br>3VF3</td>
-        </tr>
-        <tr>
-            <td><img src='images/3VG1.png' alt='3VG1.png'><br>3VG1</td>
-            <td><img src='images/3VV6.png' alt='3VV6.png'><br>3VV6</td>
-            <td><img src='images/3VV7.png' alt='3VV7.png'><br>3VV7</td>
-            <td><img src='images/3VV8.png' alt='3VV8.png'><br>3VV8</td>
-        </tr>
-        <tr>
-            <td><img src='images/3WB4.png' alt='3WB4.png'><br>3WB4</td>
-            <td><img src='images/3WB5.png' alt='3WB5.png'><br>3WB5</td>
-            <td><img src='images/4B0Q.png' alt='4B0Q.png'><br>4B0Q</td>
-            <td><img src='images/4B1C.png' alt='4B1C.png'><br>4B1C</td>
-        </tr>
-        <tr>
-            <td><img src='images/4B1D.png' alt='4B1D.png'><br>4B1D</td>
-            <td><img src='images/4B1E.png' alt='4B1E.png'><br>4B1E</td>
-            <td><img src='images/4B70.png' alt='4B70.png'><br>4B70</td>
-            <td><img src='images/4B72.png' alt='4B72.png'><br>4B72</td>
-        </tr>
-        <tr>
-            <td><img src='images/4B77.png' alt='4B77.png'><br>4B77</td>
-            <td><img src='images/4B78.png' alt='4B78.png'><br>4B78</td>
-            <td><img src='images/4D83.png' alt='4D83.png'><br>4D83</td>
-            <td><img src='images/4D85.png' alt='4D85.png'><br>4D85</td>
-        </tr>
-        <tr>
-            <td><img src='images/4D88.png' alt='4D88.png'><br>4D88</td>
-            <td><img src='images/4D89.png' alt='4D89.png'><br>4D89</td>
-            <td><img src='images/4D8C.png' alt='4D8C.png'><br>4D8C</td>
-            <td><img src='images/4DH6.png' alt='4DH6.png'><br>4DH6</td>
-        </tr>
-        <tr>
-            <td><img src='images/4DJU.png' alt='4DJU.png'><br>4DJU</td>
-            <td><img src='images/4DJV.png' alt='4DJV.png'><br>4DJV</td>
-            <td><img src='images/4DJW.png' alt='4DJW.png'><br>4DJW</td>
-            <td><img src='images/4DJX.png' alt='4DJX.png'><br>4DJX</td>
-        </tr>
-        <tr>
-            <td><img src='images/4DJY.png' alt='4DJY.png'><br>4DJY</td>
-            <td><img src='images/4DPF.png' alt='4DPF.png'><br>4DPF</td>
-            <td><img src='images/4DPI.png' alt='4DPI.png'><br>4DPI</td>
-            <td><img src='images/4DUS.png' alt='4DUS.png'><br>4DUS</td>
-        </tr>
-        <tr>
-            <td><img src='images/4DV9.png' alt='4DV9.png'><br>4DV9</td>
-            <td><img src='images/4DVF.png' alt='4DVF.png'><br>4DVF</td>
-            <td><img src='images/4EWO.png' alt='4EWO.png'><br>4EWO</td>
-            <td><img src='images/4EXG.png' alt='4EXG.png'><br>4EXG</td>
-        </tr>
-        <tr>
-            <td><img src='images/4FCO.png' alt='4FCO.png'><br>4FCO</td>
-            <td><img src='images/4FGX.png' alt='4FGX.png'><br>4FGX</td>
-            <td><img src='images/4FM7.png' alt='4FM7.png'><br>4FM7</td>
-            <td><img src='images/4FM8.png' alt='4FM8.png'><br>4FM8</td>
-        </tr>
-        <tr>
-            <td><img src='images/4FRJ.png' alt='4FRJ.png'><br>4FRJ</td>
-            <td><img src='images/4FRK.png' alt='4FRK.png'><br>4FRK</td>
-            <td><img src='images/4FRS.png' alt='4FRS.png'><br>4FRS</td>
-            <td><img src='images/4FS4.png' alt='4FS4.png'><br>4FS4</td>
-        </tr>
-        <tr>
-            <td><img src='images/4FSE.png' alt='4FSE.png'><br>4FSE</td>
-            <td><img src='images/4FSL.png' alt='4FSL.png'><br>4FSL</td>
-            <td><img src='images/4GMI.png' alt='4GMI.png'><br>4GMI</td>
-            <td><img src='images/4H3F.png' alt='4H3F.png'><br>4H3F</td>
-        </tr>
-        <tr>
-            <td><img src='images/4H3G.png' alt='4H3G.png'><br>4H3G</td>
-            <td><img src='images/4H3I.png' alt='4H3I.png'><br>4H3I</td>
-            <td><img src='images/4H3J.png' alt='4H3J.png'><br>4H3J</td>
-            <td><img src='images/4HA5.png' alt='4HA5.png'><br>4HA5</td>
-        </tr>
-        <tr>
-            <td><img src='images/4HZT.png' alt='4HZT.png'><br>4HZT</td>
-            <td><img src='images/4I0D.png' alt='4I0D.png'><br>4I0D</td>
-            <td><img src='images/4I0E.png' alt='4I0E.png'><br>4I0E</td>
-            <td><img src='images/4I0F.png' alt='4I0F.png'><br>4I0F</td>
-        </tr>
-        <tr>
-            <td><img src='images/4I0G.png' alt='4I0G.png'><br>4I0G</td>
-            <td><img src='images/4I0H.png' alt='4I0H.png'><br>4I0H</td>
-            <td><img src='images/4I0I.png' alt='4I0I.png'><br>4I0I</td>
-            <td><img src='images/4I0J.png' alt='4I0J.png'><br>4I0J</td>
-        </tr>
-        <tr>
-            <td><img src='images/4I0Z.png' alt='4I0Z.png'><br>4I0Z</td>
-            <td><img src='images/4I10.png' alt='4I10.png'><br>4I10</td>
-            <td><img src='images/4I11.png' alt='4I11.png'><br>4I11</td>
-            <td><img src='images/4I12.png' alt='4I12.png'><br>4I12</td>
-        </tr>
-        <tr>
-            <td><img src='images/4I1C.png' alt='4I1C.png'><br>4I1C</td>
-            <td><img src='images/4J0P.png' alt='4J0P.png'><br>4J0P</td>
-            <td><img src='images/4J0T.png' alt='4J0T.png'><br>4J0T</td>
-            <td><img src='images/4J0V.png' alt='4J0V.png'><br>4J0V</td>
-        </tr>
-        <tr>
-            <td><img src='images/4J0Y.png' alt='4J0Y.png'><br>4J0Y</td>
-            <td><img src='images/4J0Z.png' alt='4J0Z.png'><br>4J0Z</td>
-            <td><img src='images/4J17.png' alt='4J17.png'><br>4J17</td>
-            <td><img src='images/4J1C.png' alt='4J1C.png'><br>4J1C</td>
-        </tr>
-        <tr>
-            <td><img src='images/4J1E.png' alt='4J1E.png'><br>4J1E</td>
-            <td><img src='images/4J1F.png' alt='4J1F.png'><br>4J1F</td>
-            <td><img src='images/4J1H.png' alt='4J1H.png'><br>4J1H</td>
-            <td><img src='images/4J1I.png' alt='4J1I.png'><br>4J1I</td>
-        </tr>
-        <tr>
-            <td><img src='images/4J1K.png' alt='4J1K.png'><br>4J1K</td>
-            <td><img src='images/4K8S.png' alt='4K8S.png'><br>4K8S</td>
-            <td><img src='images/4K9H.png' alt='4K9H.png'><br>4K9H</td>
-            <td><img src='images/4KE0.png' alt='4KE0.png'><br>4KE0</td>
-        </tr>
-        <tr>
-            <td><img src='images/4KE1.png' alt='4KE1.png'><br>4KE1</td>
-            <td><img src='images/4LXA.png' alt='4LXA.png'><br>4LXA</td>
-            <td><img src='images/4LXK.png' alt='4LXK.png'><br>4LXK</td>
-            <td><img src='images/4LXM.png' alt='4LXM.png'><br>4LXM</td>
-        </tr>
-        <tr>
-            <td><img src='images/4PZW.png' alt='4PZW.png'><br>4PZW</td>
-            <td><img src='images/4PZX.png' alt='4PZX.png'><br>4PZX</td>
-            <td><img src='images/4R8Y.png' alt='4R8Y.png'><br>4R8Y</td>
-            <td><img src='images/4R91.png' alt='4R91.png'><br>4R91</td>
-        </tr>
-        <tr>
-            <td><img src='images/4R92.png' alt='4R92.png'><br>4R92</td>
-            <td><img src='images/4R93.png' alt='4R93.png'><br>4R93</td>
-            <td><img src='images/4R95.png' alt='4R95.png'><br>4R95</td>
-            <td><img src='images/4RCD.png' alt='4RCD.png'><br>4RCD</td>
-        </tr>
-        <tr>
-            <td><img src='images/4RCE.png' alt='4RCE.png'><br>4RCE</td>
-            <td><img src='images/4RCF.png' alt='4RCF.png'><br>4RCF</td>
-            <td><img src='images/4RRN.png' alt='4RRN.png'><br>4RRN</td>
-            <td><img src='images/4RRO.png' alt='4RRO.png'><br>4RRO</td>
-        </tr>
-        <tr>
-            <td><img src='images/4RRS.png' alt='4RRS.png'><br>4RRS</td>
-            <td><img src='images/4WY1.png' alt='4WY1.png'><br>4WY1</td>
-            <td><img src='images/4WY6.png' alt='4WY6.png'><br>4WY6</td>
-            <td><img src='images/4X2L.png' alt='4X2L.png'><br>4X2L</td>
-        </tr>
-        <tr>
-            <td><img src='images/4X7I.png' alt='4X7I.png'><br>4X7I</td>
-            <td><img src='images/4XXS.png' alt='4XXS.png'><br>4XXS</td>
-            <td><img src='images/4YBI.png' alt='4YBI.png'><br>4YBI</td>
-            <td><img src='images/4ZPE.png' alt='4ZPE.png'><br>4ZPE</td>
-        </tr>
-        <tr>
-            <td><img src='images/4ZPF.png' alt='4ZPF.png'><br>4ZPF</td>
-            <td><img src='images/4ZPG.png' alt='4ZPG.png'><br>4ZPG</td>
-            <td><img src='images/4ZSM.png' alt='4ZSM.png'><br>4ZSM</td>
-            <td><img src='images/4ZSP.png' alt='4ZSP.png'><br>4ZSP</td>
-        </tr>
-        <tr>
-            <td><img src='images/4ZSQ.png' alt='4ZSQ.png'><br>4ZSQ</td>
-            <td><img src='images/4ZSR.png' alt='4ZSR.png'><br>4ZSR</td>
-            <td><img src='images/5CLM.png' alt='5CLM.png'><br>5CLM</td>
-            <td><img src='images/5DQC.png' alt='5DQC.png'><br>5DQC</td>
-        </tr>
-        <tr>
-            <td><img src='images/5EZX.png' alt='5EZX.png'><br>5EZX</td>
-            <td><img src='images/5EZZ.png' alt='5EZZ.png'><br>5EZZ</td>
-            <td><img src='images/5F00.png' alt='5F00.png'><br>5F00</td>
-            <td><img src='images/5HD0.png' alt='5HD0.png'><br>5HD0</td>
-        </tr>
-        <tr>
-            <td><img src='images/5HDU.png' alt='5HDU.png'><br>5HDU</td>
-            <td><img src='images/5HDV.png' alt='5HDV.png'><br>5HDV</td>
-            <td><img src='images/5HDX.png' alt='5HDX.png'><br>5HDX</td>
-            <td><img src='images/5HDZ.png' alt='5HDZ.png'><br>5HDZ</td>
-        </tr>
-        <tr>
-            <td><img src='images/5HE4.png' alt='5HE4.png'><br>5HE4</td>
-            <td><img src='images/5HE5.png' alt='5HE5.png'><br>5HE5</td>
-            <td><img src='images/5HE7.png' alt='5HE7.png'><br>5HE7</td>
-            <td><img src='images/5HTZ.png' alt='5HTZ.png'><br>5HTZ</td>
-        </tr>
-        <tr>
-            <td><img src='images/5HU0.png' alt='5HU0.png'><br>5HU0</td>
-            <td><img src='images/5HU1.png' alt='5HU1.png'><br>5HU1</td>
-            <td><img src='images/5KQF.png' alt='5KQF.png'><br>5KQF</td>
-            <td><img src='images/5KR8.png' alt='5KR8.png'><br>5KR8</td>
-        </tr>
-        <tr>
-            <td><img src='images/5MBW.png' alt='5MBW.png'><br>5MBW</td>
-            <td><img src='images/5MXD.png' alt='5MXD.png'><br>5MXD</td>
-            <td><img src='images/5QCO.png' alt='5QCO.png'><br>5QCO</td>
-            <td><img src='images/5QCP.png' alt='5QCP.png'><br>5QCP</td>
-        </tr>
-        <tr>
-            <td><img src='images/5QCQ.png' alt='5QCQ.png'><br>5QCQ</td>
-            <td><img src='images/5QCR.png' alt='5QCR.png'><br>5QCR</td>
-            <td><img src='images/5QCS.png' alt='5QCS.png'><br>5QCS</td>
-            <td><img src='images/5QCT.png' alt='5QCT.png'><br>5QCT</td>
-        </tr>
-        <tr>
-            <td><img src='images/5QCU.png' alt='5QCU.png'><br>5QCU</td>
-            <td><img src='images/5QCV.png' alt='5QCV.png'><br>5QCV</td>
-            <td><img src='images/5QCW.png' alt='5QCW.png'><br>5QCW</td>
-            <td><img src='images/5QCX.png' alt='5QCX.png'><br>5QCX</td>
-        </tr>
-        <tr>
-            <td><img src='images/5QCY.png' alt='5QCY.png'><br>5QCY</td>
-            <td><img src='images/5QCZ.png' alt='5QCZ.png'><br>5QCZ</td>
-            <td><img src='images/5QD0.png' alt='5QD0.png'><br>5QD0</td>
-            <td><img src='images/5QD1.png' alt='5QD1.png'><br>5QD1</td>
-        </tr>
-        <tr>
-            <td><img src='images/5QD2.png' alt='5QD2.png'><br>5QD2</td>
-            <td><img src='images/5QD3.png' alt='5QD3.png'><br>5QD3</td>
-            <td><img src='images/5QD4.png' alt='5QD4.png'><br>5QD4</td>
-            <td><img src='images/5QD5.png' alt='5QD5.png'><br>5QD5</td>
-        </tr>
-        <tr>
-            <td><img src='images/5QD6.png' alt='5QD6.png'><br>5QD6</td>
-            <td><img src='images/5QD7.png' alt='5QD7.png'><br>5QD7</td>
-            <td><img src='images/5QD8.png' alt='5QD8.png'><br>5QD8</td>
-            <td><img src='images/5QD9.png' alt='5QD9.png'><br>5QD9</td>
-        </tr>
-        <tr>
-            <td><img src='images/5QDA.png' alt='5QDA.png'><br>5QDA</td>
-            <td><img src='images/5QDB.png' alt='5QDB.png'><br>5QDB</td>
-            <td><img src='images/5QDC.png' alt='5QDC.png'><br>5QDC</td>
-            <td><img src='images/5QDD.png' alt='5QDD.png'><br>5QDD</td>
-        </tr>
-        <tr>
-            <td><img src='images/5T1W.png' alt='5T1W.png'><br>5T1W</td>
-            <td><img src='images/5TOL.png' alt='5TOL.png'><br>5TOL</td>
-            <td><img src='images/6BFD.png' alt='6BFD.png'><br>6BFD</td>
-            <td><img src='images/6BFE.png' alt='6BFE.png'><br>6BFE</td>
-        </tr>
-        <tr>
-            <td><img src='images/6BFW.png' alt='6BFW.png'><br>6BFW</td>
-            <td><img src='images/6BFX.png' alt='6BFX.png'><br>6BFX</td>
-            <td><img src='images/6DHC.png' alt='6DHC.png'><br>6DHC</td>
-            <td><img src='images/6E3Z.png' alt='6E3Z.png'><br>6E3Z</td>
-        </tr>
-        <tr>
-            <td><img src='images/6EJ2.png' alt='6EJ2.png'><br>6EJ2</td>
-            <td><img src='images/6FGY.png' alt='6FGY.png'><br>6FGY</td>
-            <td><img src='images/6PZ4.png' alt='6PZ4.png'><br>6PZ4</td>
-            <td><img src='images/7B1E.png' alt='7B1E.png'><br>7B1E</td>
-        </tr>
-        <tr>
-            <td><img src='images/7B1Q.png' alt='7B1Q.png'><br>7B1Q</td>
-    </table>
+    <div class="sidebar">
+        <h3>Contributions</h3>
+        <a href="https://pdb101.rcsb.org/motm/230">Molecule of the month PDB</a>
+        <h3>Important Papers</h3>
+        <a href="https://www.pnas.org/doi/10.1073/pnas.1410250111">eIF4E 4EGI1 complex</a>
+        <a href="https://doi.org/10.1016/j.ejmech.2021.113435">biphenyl PROTAC inhibitor</a>
+        <h3>Videos</h3>
+        <a href="#" onclick="playVideo('./videos/pnas.1410250111.sm03.mov')">4EGI1 binding</a>
+		<a href="#" onclick="playVideo('./videos/NIHMS1696715-supplement-2.mp4')">4EGI1 eIF4E mechanism</a>
+        <h3>Galleries</h3>
+        <a href="BACE1.html">BACE1 PDB gallery</a>
+    </div>
+    <div class="content">
+        <h1>Evangelos Papadopoulos Ph.D.</h1>
+        <p>Welcome to my page. Below are some links:</p>
+        <p><a href="https://www.linkedin.com/in/evanspap/" target="_blank">LinkedIn Profile</a></p>
+        <p><a href="long_resume.pdf" target="_blank">Long Resume</a></p>
+        <p><a href="short_resume.pdf" target="_blank">Short Resume</a></p>
+        <p><a href="references.pdf" target="_blank">Professional references</a></p>
+    </div>
 </body>
 </html>
