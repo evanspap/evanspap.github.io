@@ -20,6 +20,12 @@
         .content {
             flex-grow: 1;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 80%;
         }
         .sidebar a {
             display: block;
@@ -31,16 +37,28 @@
         .sidebar a:hover {
             background-color: #ddd;
         }
+        .video-container {
+            margin-top: 20px;
+        }
+        .legend {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+            max-width: 600px;
+        }
     </style>
     <script>
-        function playVideo(videoSrc) {
+        function playVideo(videoSrc, titleText, legendText = "") {
             const contentDiv = document.querySelector('.content');
+            let legendHTML = legendText ? `<p class="legend">${legendText}</p>` : '';
+            
             contentDiv.innerHTML = `
-                <h3>Video Player</h3>
-                <video controls width="50%">
+                <h3>${titleText}</h3>
+                <video controls width="60%">
                     <source src="${videoSrc}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                ${legendHTML}
             `;
         }
     </script>
@@ -51,10 +69,10 @@
         <a href="https://pdb101.rcsb.org/motm/230">Molecule of the month PDB</a>
         <h3>Important Papers</h3>
         <a href="https://www.pnas.org/doi/10.1073/pnas.1410250111">eIF4E 4EGI1 complex</a>
-        <a href="https://doi.org/10.1016/j.ejmech.2021.113435">biphenyl PROTAC inhibitor</a>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8846605/">biphenyl PROTAC inhibitor</a>
         <h3>Videos</h3>
-        <a href="#" onclick="playVideo('./videos/pnas.1410250111.sm03.mov')">4EGI1 binding</a>
-		<a href="#" onclick="playVideo('./videos/NIHMS1696715-supplement-2.mp4')">4EGI1 eIF4E mechanism</a>
+        <a href="#" onclick="playVideo('./videos/pnas.1410250111.sm03.mov', '4EGI1 binding to eIF4E', 'A rotating view of the eIF4E backbone is shown as the white cartoon, and its transition from a structure bound to 4EGI-1[E] (shown as orange carbon spheres) to a structure bound to eIF4GII(K622-A637; magenta cartoon) is also shown.')">4EGI1 binding to eIF4E</a>
+        <a href="#" onclick="playVideo('./videos/NIHMS1696715-supplement-2.mp4', '4EGI1, i4EG-BiP eIF4E/eIF4G inhibition, eIF4G/4EBP no-inhibition mechanism', '4EGI1 and biphenyl analogue i4EG-BiP bind in different sites.<br>Both compounds induce allosteric inhibition of eIF4G binding but retain 4EBP binding.')">eIF4E inhibition mechanism</a>
         <h3>Galleries</h3>
         <a href="BACE1.html">BACE1 PDB gallery</a>
     </div>
