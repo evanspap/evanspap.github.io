@@ -66,7 +66,7 @@
 </head>
 <body>
   <div id="container"></div>
-  <div id="infoBox">
+  <div id="infoBox" style="display: none;">
     <h3>eIF4E–4EGI1 Complex (PDB 4TPW)</h3>
     <p><strong>PDB ID:</strong> 4TPW</p>
     <p><strong>Method:</strong> X-ray diffraction (2.10 Å)</p>
@@ -80,7 +80,7 @@
       <a href="https://pubmed.ncbi.nlm.nih.gov/25049413/" target="_blank">PubMed</a>
     </p>
   </div>
-  <button id="toggleBtn" onclick="toggleInfo()">Show Info</button>
+  <button id="toggleBtn">Show Info</button>
 
   <script>
     let stage;
@@ -91,14 +91,13 @@
         requestAnimationFrame(() => stage.handleResize());
       });
 
-      stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: true }).then(component => {
+      stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: false }).then(component => {
         component.addRepresentation("cartoon", {
-          color: "spectrum",
-          aspectRatio: 4.0,
-          radius: 0.3,
-          scale: 0.2,
-          opacity: 1.0,
-          side: "front"
+          color: "residueindex",
+          quality: "medium",
+          side: "double",
+          radiusType: "size",
+          radius: 0.2
         });
 
         component.addRepresentation("ball+stick", {
@@ -115,6 +114,9 @@
         alert("WebGL context lost. Reloading...");
         location.reload();
       }, false);
+
+      // Attach event handler after DOM is ready
+      document.getElementById("toggleBtn").addEventListener("click", toggleInfo);
     });
 
     function toggleInfo() {
