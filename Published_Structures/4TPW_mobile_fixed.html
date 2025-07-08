@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>eIF4E–4EGI1 Complex (PDB 4TPW)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <script src="https://unpkg.com/ngl@2.0.0-dev.39/dist/ngl.js"></script>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       overflow: hidden;
+      height: 100%;
+      width: 100%;
       font-family: Arial, sans-serif;
+      touch-action: none; /* Prevent zoom gesture on mobile */
     }
 
-    #viewport {
-      width: 100vw;
-      height: 100vh;
+    #container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     #infoBox {
@@ -52,14 +65,14 @@
   </style>
 </head>
 <body>
-  <div id="viewport"></div>
+  <div id="container"></div>
   <div id="infoBox">
     <h3>eIF4E–4EGI1 Complex (PDB 4TPW)</h3>
     <p><strong>PDB ID:</strong> 4TPW</p>
     <p><strong>Method:</strong> X-ray diffraction (2.10 Å)</p>
     <p><strong>Organism:</strong> Homo sapiens</p>
     <p><strong>Expression:</strong> Escherichia coli</p>
-    <p><strong>Ligand:</strong> 4EGI‑1</p>
+    <p><strong>Ligand:</strong> 4EGI -1</p>
     <img src="./Ligands/4EGI-1.svg" alt="4EGI-1 Structure" style="width:180px; height:auto; margin: 10px 0;">
     <p>
       🔗 <a href="https://www.rcsb.org/structure/4TPW" target="_blank">PDB</a> |
@@ -71,12 +84,11 @@
 
   <script>
     let stage;
-
     document.addEventListener("DOMContentLoaded", function () {
-      stage = new NGL.Stage("viewport", { backgroundColor: "white" });
+      stage = new NGL.Stage("container", { backgroundColor: "white" });
 
       window.addEventListener("resize", () => {
-        stage.handleResize();
+        requestAnimationFrame(() => stage.handleResize());
       });
 
       stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: true }).then(component => {
@@ -96,6 +108,13 @@
 
         component.autoView();
       });
+
+      const gl = stage.viewer.renderer.getContext();
+      gl.canvas.addEventListener("webglcontextlost", function (event) {
+        event.preventDefault();
+        alert("WebGL context lost. Reloading...");
+        location.reload();
+      }, false);
     });
 
     function toggleInfo() {
