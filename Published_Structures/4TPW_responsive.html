@@ -15,12 +15,10 @@
       overflow: hidden;
     }
 
-    /* Shared styling */
     canvas {
       display: block;
     }
 
-    /* Mobile style */
     #mobile-view {
       display: none;
       height: 100%;
@@ -46,7 +44,7 @@
       font-size: 14px;
       max-width: 90vw;
       z-index: 10;
-      display: none;
+      visibility: hidden;
     }
 
     #toggleBtn {
@@ -67,7 +65,6 @@
       background: #005fa3;
     }
 
-    /* Desktop style */
     #desktop-view {
       display: none;
       height: 100%;
@@ -134,7 +131,6 @@
       user-select: text;
     }
 
-    /* Media Queries */
     @media (max-width: 767px) {
       #mobile-view { display: block; }
     }
@@ -146,7 +142,6 @@
 </head>
 <body>
 
-<!-- Mobile Layout -->
 <div id="mobile-view">
   <div id="container"></div>
   <div id="infoBox">
@@ -166,7 +161,6 @@
   <button id="toggleBtn">Show Info</button>
 </div>
 
-<!-- Desktop Layout -->
 <div id="desktop-view">
   <div id="desktop-container">
     <div id="left-column">
@@ -182,20 +176,16 @@
       </div>
       <div id="summary-box">
         <h1>Structure Summary: PDB 4TPW</h1>
-        <p>
-          PDB ID <strong>4TPW</strong> represents the crystal structure of the human cap‑binding protein <strong>eIF4E</strong> in complex with a small‑molecule inhibitor called <strong>4EGI‑1</strong>.
-        </p>
-        <p>
-          The inhibitor 4EGI‑1 is a potential lead compound for developing therapeutic agents targeting translation in cancer cells.
+        <p><strong>eIF4E</strong> in complex with the inhibitor <strong>4EGI‑1</strong>, showing its allosteric binding mode used to interfere with protein translation.
         </p>
         <ul>
           <li><strong>Organism:</strong> Homo sapiens</li>
           <li><strong>Expression system:</strong> Escherichia coli</li>
           <li><strong>Method:</strong> X‑ray diffraction</li>
           <li><strong>Resolution:</strong> 2.10 Å</li>
-          <li><strong>Ligand:</strong> 4EGI‑1 / [33R] </li>
-          <img src="./Ligands/4EGI-1.svg" alt="4EGI-1 Structure" style="width:200px; height:auto; margin-top:10px;">
+          <li><strong>Ligand:</strong> 4EGI‑1 / [33R]</li>
         </ul>
+        <img src="./Ligands/4EGI-1.svg" alt="4EGI-1 Structure" style="width:200px; height:auto; margin-top:10px;">
       </div>
       <iframe id="frame-box" src="about:blank"></iframe>
     </div>
@@ -203,6 +193,15 @@
 </div>
 
 <script>
+  const infoBox = document.getElementById("infoBox");
+  const toggleBtn = document.getElementById("toggleBtn");
+
+  toggleBtn.addEventListener("click", () => {
+    const isVisible = infoBox.style.visibility === "visible";
+    infoBox.style.visibility = isVisible ? "hidden" : "visible";
+    toggleBtn.textContent = isVisible ? "Show Info" : "Hide Info";
+  });
+
   if (window.innerWidth < 768) {
     const stage = new NGL.Stage("container", { backgroundColor: "white" });
     window.addEventListener("resize", () => requestAnimationFrame(() => stage.handleResize()));
@@ -219,17 +218,6 @@
         colorScheme: "element"
       });
       component.autoView();
-    });
-    document.getElementById("toggleBtn").addEventListener("click", function () {
-      const box = document.getElementById("infoBox");
-      const btn = document.getElementById("toggleBtn");
-      if (box.style.display === "none") {
-        box.style.display = "block";
-        btn.textContent = "Hide Info";
-      } else {
-        box.style.display = "none";
-        btn.textContent = "Show Info";
-      }
     });
   } else {
     const stage = new NGL.Stage("nglViewer");
