@@ -2,161 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>eIF4E complex with 4EGI1 (PDB 4TPW)</title>
-  <script src="https://unpkg.com/ngl@0.10.4/dist/ngl.js"></script>
+  <title>eIF4E–4EGI1 Complex (PDB 4TPW)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <script src="https://unpkg.com/ngl@2.0.0-dev.39/dist/ngl.js"></script>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      /* Remove outer vertical scroll */
-      font-family: Arial, sans-serif;
-      height: 100%;
       overflow: hidden;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      touch-action: none; /* Prevent zoom gesture on mobile */
     }
 
     #container {
-      display: flex;
-      height: 100vh;
-    }
-
-    /* Keep strict 50‑50 split */
-    #left-column, #right-column {
-      width: 50%;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-
-    #left-column {
-      background-color: #f9f9f9;
-    }
-
-    #right-column {
-      border-left: 2px solid #ccc;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #button-bar {
-      display: flex;
-      justify-content: space-around;
-      padding: 10px;
-      background-color: #eee;
-    }
-
-    /* Summary takes remaining height; no scroll */
-    #summary-box {
-      flex-grow: 1;
-      padding: 20px;
-      background-color: #fefefe;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       overflow: hidden;
+      z-index: 1;
     }
 
-    #summary-box h1 {
-      font-size: 20px;
-    }
-
-    /* Iframe shows external pages with only vertical scroll */
-    #frame-box {
-      flex-grow: 1;
+    canvas {
+      display: block;
       width: 100%;
       height: 100%;
-      border: none;
-      overflow-x: hidden;
-      overflow-y: auto;
-      display: none; /* hidden by default */
     }
 
-    .link-button {
-      padding: 10px 20px;
-      font-size: 14px;
-      cursor: pointer;
+    #infoBox {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
       border: 1px solid #ccc;
-      background-color: #fff;
-      text-decoration: none;
-      color: #000;
-      text-align: center;
-      user-select: text;
+      padding: 10px;
+      font-size: 14px;
+      max-width: 90vw;
+      z-index: 10;
+      display: none;
+    }
+
+    #toggleBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      border-radius: 4px;
+      z-index: 11;
+      cursor: pointer;
+    }
+
+    #toggleBtn:hover {
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
-
-<div id="container">
-  <div id="left-column">
-    <h2>eIF4E complex with 4EGI1 (PDB 4TPW)</h2>
-    <div id="nglViewer" style="width: 100%; height: 90%;"></div>
+  <div id="container"></div>
+  <div id="infoBox" style="display: none;">
+    <h3>eIF4E–4EGI1 Complex (PDB 4TPW)</h3>
+    <p><strong>PDB ID:</strong> 4TPW</p>
+    <p><strong>Method:</strong> X-ray diffraction (2.10 Å)</p>
+    <p><strong>Organism:</strong> Homo sapiens</p>
+    <p><strong>Expression:</strong> Escherichia coli</p>
+    <p><strong>Ligand:</strong> 4EGI -1</p>
+    <img src="./Ligands/4EGI-1.svg" alt="4EGI-1 Structure" style="width:180px; height:auto; margin: 10px 0;">
+    <p>
+      🔗 <a href="https://www.rcsb.org/structure/4TPW" target="_blank">PDB</a> |
+      <a href="https://www.uniprot.org/uniprotkb/P06730/entry" target="_blank">UniProt</a> |
+      <a href="https://pubmed.ncbi.nlm.nih.gov/25049413/" target="_blank">PubMed</a>
+    </p>
   </div>
+  <button id="toggleBtn">Show Info</button>
 
-  <div id="right-column">
-    <div id="button-bar">
-      <a class="link-button" href="#" onclick="showSummary(); return false;">Summary</a>
-      <a class="link-button" href="https://www.rcsb.org/structure/4TPW" onclick="loadFrame(this.href); return false;">PDB</a>
-      <a class="link-button" href="https://www.uniprot.org/uniprotkb/P06730/entry" onclick="loadFrame(this.href); return false;">UniProt</a>
-      <a class="link-button" href="https://pubmed.ncbi.nlm.nih.gov/25049413/" target="_blank">PubMed</a>
-    </div>
+  <script>
+    let stage;
+    document.addEventListener("DOMContentLoaded", function () {
+      stage = new NGL.Stage("container", { backgroundColor: "white" });
 
-    <!-- Summary shown by default -->
-    <div id="summary-box">
-      <h1>Structure Summary: PDB 4TPW</h1>
-      <p>
-        PDB ID <strong>4TPW</strong> represents the crystal structure of the human cap‑binding protein <strong>eIF4E</strong> in complex with a small‑molecule inhibitor called <strong>4EGI‑1</strong>.
-        This structure illustrates how 4EGI‑1 binds to a surface pocket on eIF4E, disrupting its interaction with eIF4G and modulating translation initiation — a key process in gene expression.
-      </p>
-      <p>
-        The inhibitor 4EGI‑1 is a potential lead compound for developing therapeutic agents targeting translation in cancer cells. The binding site is distant from the cap‑binding pocket, making this an allosteric mode of inhibition. The structure was resolved at 2.10 Å resolution.
-      </p>
-      <ul>
-        <li><strong>Organism:</strong> Homo sapiens</li>
-        <li><strong>Expression system:</strong> Escherichia coli</li>
-        <li><strong>Method:</strong> X‑ray diffraction</li>
-        <li><strong>Resolution:</strong> 2.10 Å</li>
-        <li><strong>Ligand:</strong> 4EGI‑1 / [33R] </li>
-		<img src="./Ligands/4EGI-1.svg" alt="4EGI-1 Structure" style="width:200px; height:auto; margin-top:10px;">
-
-      </ul>
-    </div>
-
-    <!-- External page container -->
-    <iframe id="frame-box" src="about:blank"></iframe>
-  </div>
-</div>
-
-<script>
-  /* -------- NGL viewer setup -------- */
-  const stage = new NGL.Stage("nglViewer");
-  stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: true })
-    .then(component => {
-      component.addRepresentation("cartoon", {
-        color: "spectrum",
-        aspectRatio: 4.0,
-        radius: 0.3,
-        scale: 0.2,
-        opacity: 1.0,
-        side: "front"
+      window.addEventListener("resize", () => {
+        requestAnimationFrame(() => stage.handleResize());
       });
-      component.addRepresentation("ball+stick", {
-        sele: "hetero and not (water or ion)",
-        colorScheme: "element"
+
+      stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: false }).then(component => {
+        component.addRepresentation("cartoon", {
+          color: "residueindex",
+          quality: "medium",
+          side: "double",
+          radiusType: "size",
+          radius: 0.2
+        });
+
+        component.addRepresentation("ball+stick", {
+          sele: "hetero and not (water or ion)",
+          colorScheme: "element"
+        });
+
+        component.autoView();
       });
-      component.autoView();
+
+      const gl = stage.viewer.renderer.getContext();
+      gl.canvas.addEventListener("webglcontextlost", function (event) {
+        event.preventDefault();
+        alert("WebGL context lost. Reloading...");
+        location.reload();
+      }, false);
+
+      // Attach event handler after DOM is ready
+      document.getElementById("toggleBtn").addEventListener("click", toggleInfo);
     });
 
-  /* -------- Toggle helpers -------- */
-  function loadFrame(url) {
-    document.getElementById('summary-box').style.display = 'none';
-    const frame = document.getElementById('frame-box');
-    frame.style.display = 'block';
-    frame.src = url;
-  }
-
-  function showSummary() {
-    const summaryBox = document.getElementById('summary-box');
-    const frame = document.getElementById('frame-box');
-    frame.style.display = 'none';
-    summaryBox.style.display = 'block';
-    document.getElementById('right-column').scrollTop = 0; // ensure top of summary
-  }
-</script>
-
+    function toggleInfo() {
+      const box = document.getElementById("infoBox");
+      const btn = document.getElementById("toggleBtn");
+      if (box.style.display === "none") {
+        box.style.display = "block";
+        btn.textContent = "Hide Info";
+      } else {
+        box.style.display = "none";
+        btn.textContent = "Show Info";
+      }
+    }
+  </script>
 </body>
 </html>
