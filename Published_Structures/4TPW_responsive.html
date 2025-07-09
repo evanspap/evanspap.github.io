@@ -233,14 +233,9 @@
     });
   } else {
     const stage = new NGL.Stage("nglViewer");
-    stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: true }).then(component => {
+    stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: false }).then(component => {
       component.addRepresentation("cartoon", {
-        color: "spectrum",
-        aspectRatio: 4.0,
-        radius: 0.3,
-        scale: 0.2,
-        opacity: 1.0,
-        side: "front"
+        color: "spectrum"
       });
       component.addRepresentation("ball+stick", {
         sele: "hetero and not (water or ion)",
