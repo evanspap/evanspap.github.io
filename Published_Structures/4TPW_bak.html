@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eIF4E–4EGI1 Complex (PDB 4TPW)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <script src="https://unpkg.com/ngl@2.0.0-dev.39/dist/ngl.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      touch-action: none; /* Prevent zoom gesture on mobile */
+    }
+
+    #container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #infoBox {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 14px;
+      max-width: 90vw;
+      z-index: 10;
+      display: none;
+    }
+
+    #toggleBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      border-radius: 4px;
+      z-index: 11;
+      cursor: pointer;
+    }
+
+    #toggleBtn:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <div id="infoBox" style="display: none;">
+    <h3>eIF4E–4EGI1 Complex (PDB 4TPW)</h3>
+    <p><strong>PDB ID:</strong> 4TPW</p>
+    <p><strong>Method:</strong> X-ray diffraction (2.10 Å)</p>
+    <p><strong>Organism:</strong> Homo sapiens</p>
+    <p><strong>Expression:</strong> Escherichia coli</p>
+    <p><strong>Ligand:</strong> 4EGI -1</p>
+    <img src="./Ligands/4EGI-1.svg" alt="4EGI-1 Structure" style="width:180px; height:auto; margin: 10px 0;">
+    <p>
+      🔗 <a href="https://www.rcsb.org/structure/4TPW" target="_blank">PDB</a> |
+      <a href="https://www.uniprot.org/uniprotkb/P06730/entry" target="_blank">UniProt</a> |
+      <a href="https://pubmed.ncbi.nlm.nih.gov/25049413/" target="_blank">PubMed</a>
+    </p>
+  </div>
+  <button id="toggleBtn">Show Info</button>
+
+  <script>
+    let stage;
+    document.addEventListener("DOMContentLoaded", function () {
+      stage = new NGL.Stage("container", { backgroundColor: "white" });
+
+      window.addEventListener("resize", () => {
+        requestAnimationFrame(() => stage.handleResize());
+      });
+
+      stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: false }).then(component => {
+        component.addRepresentation("cartoon", {
+          color: "residueindex",
+          quality: "medium",
+          side: "double",
+          radiusType: "size",
+          radius: 0.2
+        });
+
+        component.addRepresentation("ball+stick", {
+          sele: "hetero and not (water or ion)",
+          colorScheme: "element"
+        });
+
+        component.autoView();
+      });
+
+      const gl = stage.viewer.renderer.getContext();
+      gl.canvas.addEventListener("webglcontextlost", function (event) {
+        event.preventDefault();
+        alert("WebGL context lost. Reloading...");
+        location.reload();
+      }, false);
+
+      // Attach event handler after DOM is ready
+      document.getElementById("toggleBtn").addEventListener("click", toggleInfo);
+    });
+
+    function toggleInfo() {
+      const box = document.getElementById("infoBox");
+      const btn = document.getElementById("toggleBtn");
+      if (box.style.display === "none") {
+        box.style.display = "block";
+        btn.textContent = "Hide Info";
+      } else {
+        box.style.display = "none";
+        btn.textContent = "Show Info";
+      }
+    }
+  </script>
+</body>
+</html>
