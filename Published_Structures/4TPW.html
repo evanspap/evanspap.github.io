@@ -210,14 +210,20 @@
     const stage = new NGL.Stage("container");
     stage.loadFile("./PDB/4TPW.PDB").then(o => {
       o.addRepresentation("cartoon", { color: "residueindex" });
-      o.addRepresentation("ball+stick", { sele: "hetero" });
+      o.addRepresentation("ball+stick", {
+    sele: "hetero and not water and not ion and not HOH",
+    colorScheme: "element"
+});
       o.autoView();
     });
   } else {
     const stage = new NGL.Stage("nglViewer");
     stage.loadFile("./PDB/4TPW.PDB").then(o => {
       o.addRepresentation("cartoon", { color: "spectrum" });
-      o.addRepresentation("ball+stick", { sele: "hetero" });
+      o.addRepresentation("ball+stick", {
+    sele: "hetero and not water and not ion and not HOH",
+    colorScheme: "element"
+});
       o.autoView();
     });
   }
