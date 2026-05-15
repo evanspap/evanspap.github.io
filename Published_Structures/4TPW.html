@@ -205,7 +205,6 @@
     });
   }
 
-<<<<<<< HEAD
   const pdbPath = window.location.protocol === "file:"
     ? "https://evanspap.github.io/Published_Structures/PDB/4TPW.PDB"
     : "./PDB/4TPW.PDB";
@@ -226,6 +225,7 @@
         colorScheme: "element"
       });
       component.autoView();
+      requestAnimationFrame(() => stage.handleResize());
     });
   } else {
     const stage = new NGL.Stage("nglViewer");
@@ -238,28 +238,7 @@
         colorScheme: "element"
       });
       component.autoView();
-=======
-  /* NGL LOADING */
-  if (window.innerWidth < 768) {
-    const stage = new NGL.Stage("container");
-    stage.loadFile("./PDB/4TPW.PDB").then(o => {
-      o.addRepresentation("cartoon", { color: "residueindex" });
-      o.addRepresentation("ball+stick", {
-    sele: "hetero and not water and not ion and not HOH",
-    colorScheme: "element"
-});
-      o.autoView();
-    });
-  } else {
-    const stage = new NGL.Stage("nglViewer");
-    stage.loadFile("./PDB/4TPW.PDB").then(o => {
-      o.addRepresentation("cartoon", { color: "spectrum" });
-      o.addRepresentation("ball+stick", {
-    sele: "hetero and not water and not ion and not HOH",
-    colorScheme: "element"
-});
-      o.autoView();
->>>>>>> 9589d3554802b9e2f47605d448acb82cbc15af2a
+      requestAnimationFrame(() => stage.handleResize());
     });
   }
 
