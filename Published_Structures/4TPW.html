@@ -206,10 +206,14 @@
     toggleBtn.textContent = isVisible ? "Show Info" : "Hide Info";
   });
 
+  const pdbPath = window.location.protocol === "file:"
+    ? "https://evanspap.github.io/Published_Structures/PDB/4TPW.PDB"
+    : "./PDB/4TPW.PDB";
+
   if (window.innerWidth < 768) {
     const stage = new NGL.Stage("container", { backgroundColor: "white" });
     window.addEventListener("resize", () => requestAnimationFrame(() => stage.handleResize()));
-    stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: false }).then(component => {
+    stage.loadFile(pdbPath, { defaultRepresentation: false }).then(component => {
       component.addRepresentation("cartoon", {
         color: "residueindex",
         quality: "medium",
@@ -225,7 +229,7 @@
     });
   } else {
     const stage = new NGL.Stage("nglViewer");
-    stage.loadFile("./PDB/4TPW.PDB", { defaultRepresentation: false }).then(component => {
+    stage.loadFile(pdbPath, { defaultRepresentation: false }).then(component => {
       component.addRepresentation("cartoon", {
         color: "spectrum"
       });
